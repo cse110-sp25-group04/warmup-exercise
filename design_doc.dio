@@ -1,25 +1,28 @@
 <mxfile host="65bd71144e">
     <diagram id="_-PKDv2D4QOxhtcSlVaa" name="Page-1">
-        <mxGraphModel dx="772" dy="515" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="1600" background="none" math="0" shadow="0">
+        <mxGraphModel dx="842" dy="620" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="700" pageHeight="1000" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
+                <mxCell id="75" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#a0522d;strokeColor=#6D1F00;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="930" y="1000" width="440" height="300" as="geometry"/>
+                </mxCell>
                 <mxCell id="2" value="Part 1: Card Components &amp;amp; Deck" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="70" y="70" width="210" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="Responsibilities:&lt;div&gt;(Asset Acquisition Team)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. Find basic playing card assets (INCLUDING CARD BACK)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. Follow a consistent naming sceme&lt;/div&gt;&lt;div&gt;(ex: value_type.ext)&lt;/div&gt;&lt;div&gt;(ex: queen_hearts.png -&amp;gt; Q_H.png)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;3. Find casino chip assets&lt;/div&gt;&lt;div&gt;(name as: value_chip.png)&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;4. Design custom cards for our team (optional but very cool)&amp;nbsp;&amp;nbsp;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="6" value="Responsibilities:&lt;div&gt;(Asset Acquisition Team)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. Find basic playing card assets (INCLUDING CARD BACK)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. Follow a consistent naming sceme&lt;/div&gt;&lt;div&gt;(ex: value_type.ext)&lt;/div&gt;&lt;div&gt;(ex: queen_hearts.png -&amp;gt; Q_H.png)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;3. Find casino chip assets&lt;/div&gt;&lt;div&gt;(name as: value_chip.png)&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;4. Design custom cards for our team (optional but very cool)&amp;nbsp;&amp;nbsp;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="70" y="160" width="235" height="260" as="geometry"/>
                 </mxCell>
-                <mxCell id="7" value="5" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="7" value="5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
                     <mxGeometry x="97.5" y="440" width="50" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="8" value="25" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="8" value="25" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="162.5" y="440" width="50" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="9" value="50" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="9" value="50" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
                     <mxGeometry x="230" y="440" width="50" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="11" value="HTML/CSS Team:&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. Come up with a color scheme for the team&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. Come up with a design for the structure (ex: button position, hands, deck, chips...)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;3. Render and style the design (HTML/CSS)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;4. flip / shuffle animation&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;5. ~ (card dealing animation)&lt;/div&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="11" value="HTML/CSS Team:&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. Come up with a color scheme for the team&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. Come up with a design for the structure (ex: button position, hands, deck, chips...)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;3. Render and style the design (HTML/CSS)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;4. flip / shuffle animation&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;5. ~ (card dealing animation)&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="360" y="160" width="220" height="260" as="geometry"/>
                 </mxCell>
                 <mxCell id="12" value="&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;If assets not available use a colored empty continer as placeholder&lt;/span&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -28,25 +31,25 @@
                 <mxCell id="13" value="" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="660" y="210" width="90" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="14" value="" style="whiteSpace=wrap;html=1;rotation=15;" parent="1" vertex="1">
-                    <mxGeometry x="660" y="210" width="90" height="130" as="geometry"/>
+                <mxCell id="14" value="" style="whiteSpace=wrap;html=1;rotation=-15;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="210" width="90" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="16" value="" style="whiteSpace=wrap;html=1;rotation=-15;" parent="1" vertex="1">
+                <mxCell id="16" value="" style="whiteSpace=wrap;html=1;rotation=-155;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="670" y="210" width="90" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="17" value="" style="whiteSpace=wrap;html=1;rotation=0;" parent="1" vertex="1">
+                <mxCell id="17" value="" style="whiteSpace=wrap;html=1;rotation=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="660" y="210" width="90" height="130" as="geometry"/>
                 </mxCell>
                 <mxCell id="18" value="Shuffle Animation&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;(animation created by frontend team,&lt;/div&gt;&lt;div&gt;dynamic execution by backend team)&lt;/div&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="650" y="370" width="120" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" value="" style="whiteSpace=wrap;html=1;rotation=15;" parent="1" vertex="1">
+                <mxCell id="20" value="" style="whiteSpace=wrap;html=1;rotation=15;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="400" y="490" width="110" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="21" value="" style="whiteSpace=wrap;html=1;rotation=25;" parent="1" vertex="1">
+                <mxCell id="21" value="" style="whiteSpace=wrap;html=1;rotation=25;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="425" y="520" width="110" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="22" value="Backend JS Team:&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. generate a deck (randomly)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. card shuffle logic&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;3. dealing the cards&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;4. flip / shuffle animation execution&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;5. moving cards (tentative)&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;6. deck state&amp;nbsp;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="22" value="Backend JS Team:&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. generate a deck (randomly)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. card shuffle logic&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;3. dealing the cards&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;4. flip / shuffle animation execution&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;5. moving cards (tentative)&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;6. deck state&amp;nbsp;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
                     <mxGeometry x="70" y="510" width="240" height="230" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="Game State Diagram:" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -87,6 +90,111 @@
                 </mxCell>
                 <mxCell id="38" style="edgeStyle=none;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.625;entryY=1.033;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="35" target="37" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#a0522d;strokeColor=#6D1F00;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="950" y="180" width="440" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="970" y="195" width="400" height="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+                    <mxGeometry x="1083.75" y="420" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="25" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="1145" y="425" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="50" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+                    <mxGeometry x="1206.25" y="420" width="43.75" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1101.25" y="350" width="43.75" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1150" y="350" width="43.75" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1200" y="350" width="43.75" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1101.25" y="210" width="43.75" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1150" y="210" width="43.75" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1200" y="210" width="43.75" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="" style="whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+                    <mxGeometry x="1016.88" y="490" width="283.12" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="HIT" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1043.75" y="500" width="86.25" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="STAND" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1185" y="500" width="96.25" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="READY" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1043.75" y="550" width="86.25" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="DEAL" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1185" y="550" width="95" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#a0522d;strokeColor=#6D1F00;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="938.44" y="630" width="440" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="958.44" y="645" width="400" height="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="" style="whiteSpace=wrap;html=1;rotation=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="1115" y="660" width="90" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="" style="whiteSpace=wrap;html=1;rotation=-15;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="1125" y="660" width="90" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="" style="whiteSpace=wrap;html=1;rotation=15;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+                    <mxGeometry x="1115" y="660" width="90" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="72" value="SHUFFLE" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1028.75" y="830" width="101.25" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="73" value="FLIP" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1176.5600000000002" y="830" width="111.87" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="950" y="1015" width="400" height="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" value="" style="whiteSpace=wrap;html=1;rotation=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="1230" y="1070" width="66.25" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="78" value="" style="whiteSpace=wrap;html=1;rotation=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="1223.75" y="1070" width="66.25" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="79" value="" style="whiteSpace=wrap;html=1;rotation=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="1220" y="1070" width="66.25" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="80" value="" style="whiteSpace=wrap;html=1;rotation=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="1213.75" y="1070" width="66.25" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="82" value="DEAL" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1113.44" y="1230" width="90" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="NOTE: WILL ALLOW TO MOVE CARDS AROUND" style="whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+                    <mxGeometry x="1016.25" y="1310" width="280" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="98" value="Additional Assets:&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. Background image (pixel art style) - likely a table&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;2. Button art&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="630" y="520" width="160" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="99" value="Team Color Scheme:&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;(CORE)&lt;br&gt;&lt;/font&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. Gold:&amp;nbsp;#FFCC00&lt;/div&gt;&lt;div&gt;2. Blue:&amp;nbsp;#150062&lt;/div&gt;&lt;div&gt;3. Brown:&amp;nbsp;#A05600&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="101" y="1390" width="120" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="100" value="&amp;lt;div&amp;gt; &amp;lt;/div&amp;gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1100" y="1390" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="102" value="For card shuffle:&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;.class {&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;// animation attached (right spin)&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;.class {&lt;/div&gt;&lt;div&gt;// leftside spin&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="860" y="1470" width="220" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="103" value="DECK IMAGE" style="whiteSpace=wrap;html=1;rotation=-15;" vertex="1" parent="1">
+                    <mxGeometry x="1280" y="240" width="90" height="40" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
