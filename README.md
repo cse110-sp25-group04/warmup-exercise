@@ -3,6 +3,7 @@
 These will be marked complete as we go:
 
 This is a test
+This is another test
 
 <ol>
 <li><b>flip and shuffle</b></li>
