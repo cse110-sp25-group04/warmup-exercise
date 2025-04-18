@@ -1,9 +1,48 @@
 body {
-    background-color: #91B44D;
+    background-color: #1f446a;
+}
+
+.cards-container {
+    perspective: 1000px;
+}
+
+.cards {
+    width: 125px;
+    height: 160px;
+    position: relative;
+    border: 1px solid black;
+    border-radius: 10px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.cards:hover {
+    transform: rotateY(180deg);
+}
+
+.cards-front, .cards-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards-front {
+    background-color: rgb(31, 90, 130);
+    border-radius: 10px;
+}
+
+.cards-back {
+    background-color: rgb(0, 249, 112);
+    border-radius: 10px;
+    transform: rotateY(180deg);
 }
 
 #casino-table {
-    background-color: #972A27;
+    background-color: #e8cf27;
     width: 1050px;
     height: 600px;
     border: 5px solid black;
@@ -17,8 +56,9 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-}   
+} 
 
+/*
 #shuffle {
     background-color: white;
     text-align: center;
@@ -30,17 +70,31 @@ body {
     bottom: 30px;
     width: 120px;
     height: 60px;
+}*/
+
+.buttons-container {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    pointer-events: none;
+    transform: translateX(-50%);
+    z-index: 10;
 }
 
 #flip {
+    pointer-events: auto;
     background-color: white;
+    font-size: 20px;
+    padding: 8px 16px;
+    border-radius: 10px;
     text-align: center;
-    font-size: 27px;
-    border-radius: 15px;
-    padding: 10px;
-    position: absolute;
-    left: 650px;
-    bottom: 30px;
-    width: 120px;
-    height: 60px;
+}
+
+#shuffle {
+    pointer-events: auto;
+    background-color: white;
+    font-size: 20px;
+    padding: 8px 16px;
+    border-radius: 10px;
+    text-align: center;
 }
