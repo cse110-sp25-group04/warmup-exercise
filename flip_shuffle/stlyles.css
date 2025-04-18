@@ -1,0 +1,44 @@
+/*Make the card flip*/
+
+/*This container*/
+.flip-card {
+    background-color: transparent;
+    width: 100px;
+    height: 140px;
+    perspective: 1000px;
+}
+
+/*This container is for the front and back side*/
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s;
+    transform-style: preserve-3d;
+}
+
+/*it does a horizontal flip*/
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/*style the front side*/
+.flip-card-front {
+    background-color: transparent;
+    position: absolute;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+/*Style the back side*/
+.flip-card-back {
+    background-image: url(../assets/card_back.png);
+    background-size: cover;
+    transform: rotateY(180deg);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
