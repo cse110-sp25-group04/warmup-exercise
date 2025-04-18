@@ -1,0 +1,46 @@
+body {
+    background-color: #91B44D;
+}
+
+#casino-table {
+    background-color: #972A27;
+    width: 1050px;
+    height: 600px;
+    border: 5px solid black;
+    border-radius: 15px 15px 450px 450px;
+    border-bottom: 20px solid black;
+    border-left: 20px solid black;
+    border-right: 20px solid black;
+    border-top: none;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}   
+
+#shuffle {
+    background-color: white;
+    text-align: center;
+    font-size: 27px;
+    border-radius: 15px;
+    padding: 10px;
+    position: absolute;
+    left: 500px;
+    bottom: 30px;
+    width: 120px;
+    height: 60px;
+}
+
+#flip {
+    background-color: white;
+    text-align: center;
+    font-size: 27px;
+    border-radius: 15px;
+    padding: 10px;
+    position: absolute;
+    left: 650px;
+    bottom: 30px;
+    width: 120px;
+    height: 60px;
+}
