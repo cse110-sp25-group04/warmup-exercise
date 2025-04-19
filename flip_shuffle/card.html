@@ -9,14 +9,18 @@
 
     <body>
         <section id="casino-table">
-            <div class="cards-container">
+            <section class="cards-container">
                 <div class="cards-wrapper">
                     <section class="cards">
                         <section class="cards-front"><h2>FRONT</h2></section>
                         <section class="cards-back"><h2>BACK</h2></section>
                     </section>
                 </div>
-            </div>
+            </section>
+
+            <section class="deck-container">
+                <img src="../assets/cards/card_back.png" alt="deck" id="deck">
+            </section>
         </section>
 
         <section class="chip-visibility">
@@ -31,7 +35,20 @@
         </section>
 
         <section class="buttons-container">
-            <button id="shuffle">Shuffle</button>
+            <button id="shuffle-anim">Shuffle</button>
+            <script>
+                const shuffleButton = document.getElementById("shuffle-anim");
+                const deck = document.getElementById("deck");
+              
+                shuffleButton.addEventListener("click", () => {
+                  deck.classList.remove("shuffling");
+                  void deck.offsetWidth; // force reflow
+                  deck.classList.add("shuffling");
+                });
+              </script>
+              
+
+
             <button id="flip">Flip</button>
         </section>
 
