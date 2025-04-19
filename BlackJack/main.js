@@ -142,17 +142,17 @@ class Card {
     //Converts the rank of the card into a value, mainly for the face cards and ace logic (1 or 11)
     static rankToValues(rank) {
         if (rank === 'A') {
-            return [1, 11];
+            return 1;
         }
         if ('JQK'.includes(rank)) {
-            return [10];
+            return 10;
         } 
-        return [Number(rank)];
+        return Number(rank);
       }
 }
 
-const rank = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-const suit = ["H", "D", "C", "S"];
+const ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+const suits = ["H", "D", "C", "S"];
 
 //Shuffle logic made by Fisher-Yates
 //https://en.wikipedia.org/wiki/Fisher–Yates_shuffle
