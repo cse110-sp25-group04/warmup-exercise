@@ -71,7 +71,7 @@ class Player {
             return;
         } else if (amount < 0 && Math.abs(amount) <= this.bet) {
             // negative amount -> removing bet
-            removeBet(amount);
+            this.removeBet(amount);
             console.log("player bet: " + this.bet);
             return;
         }
@@ -151,8 +151,8 @@ class Card {
       }
 }
 
-const ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-const suits = ["H", "D", "C", "S"];
+const values = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+const types = ["H", "D", "C", "S"];
 
 //Shuffle logic made by Fisher-Yates
 //https://en.wikipedia.org/wiki/Fisher–Yates_shuffle

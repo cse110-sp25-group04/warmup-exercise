@@ -1,0 +1,197 @@
+/*Make the card flip*/
+
+/*This container*/
+#flip_card {
+    background-color: transparent;
+    width: 100px;
+    height: 140px;
+    perspective: 1000px;
+    display: flex;
+    z-index: 2;
+}
+
+/*This container is for the front and back side*/
+#flip_card_inner {
+    background-color: transparent;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s;
+    transform-style: preserve-3d;
+}
+
+/*it does a horizontal flip*/
+#flip_card:hover #flip_card_inner {
+    transform: rotateY(180deg);
+}
+
+/*style the front side*/
+#flip_card_front {
+    background-color: transparent;
+    position: absolute;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+/*Style the back side*/
+#flip_card_back {
+    background-color: transparent;
+    background-size: cover;
+    transform: rotateY(180deg);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+#flip_card_front img,
+#flip_card_back img {
+    background-color: transparent;
+    border-radius: 5%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/*button container*/
+.button_container {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+/*style the buttons*/
+button {
+    font-size: 50px;
+    background-color: #24365F;
+    border-radius: 50px;
+    border-color: #916B22;
+    padding: 10px;
+    width: 230px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Background of the game*/
+.game_background {
+    background-image: url(../assets/background.png);
+    background-color: transparent;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+    
+} 
+
+/* Styling the table */
+.table {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* keep content centered */
+    justify-content: center;
+    row-gap: 20px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: visible;
+}
+
+.table::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../assets/table.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%) rotate(90deg);
+    z-index: -1;
+}
+
+/*Shuffle Animation*/
+#card_deck {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    top: 23%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    margin-top: 10px;
+    align-content: center;
+    z-index: 1;
+}
+#card_1 {
+    position: absolute;
+    background-color: transparent;
+    border-radius: 5%;
+    align-items: center;
+    width: 100px;
+    height: 140px;
+    animation-timing-function: linear;
+    animation-delay: 5ms;
+    animation-duration: 1s;
+    animation-name: spin;
+}
+#card_2 {
+    position: absolute;
+    background-color: transparent;
+    border-radius: 5%;
+    width: 100px;
+    height: 140px;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+    animation-delay: 10ms;
+    animation-duration: 1s;
+    animation-direction: alternate;
+    animation-name: spin;
+}
+#card_3 {
+    position: absolute;
+    background-color: transparent;
+    border-radius: 5%;
+    width: 100px;
+    height: 140px;
+    animation-duration: 1s;
+    animation-name: spin;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+    animation-delay: 15ms;
+}
+#card_4 {
+    position: relative;
+    background-color: transparent;
+    border-radius: 5%;
+    width: 100px;
+    height: 140px;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);
+    animation-delay: 5ms;
+    animation-name: spin;
+    animation-direction: alternate-reverse;
+} 
+
+@keyframes spin{
+    0%{
+        
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
