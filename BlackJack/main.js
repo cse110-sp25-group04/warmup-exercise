@@ -132,14 +132,27 @@ class Dealer {
 }
 
 class Card {
-    constructor(value, type) {
-        this.name = value + "_" + type + ".png";
-        this.value = parseInt(value); // more complex later
+    constructor(rank, suit) {
+      this.rank = rank;
+      this.suit = suit;
+      this.name = '${rank}_${suit}.png';
+      this.values = Card.rankToValues(rank);
     }
+
+    //Converts the rank of the card into a value, mainly for the face cards and ace logic (1 or 11)
+    static rankToValues(rank) {
+        if (rank === 'A') {
+            return [1, 11];
+        }
+        if ('JQK'.includes(rank)) {
+            return [10];
+        } 
+        return [Number(rank)];
+      }
 }
 
-const values = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-const types = ["H", "D", "C", "S"];
+const rank = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+const suit = ["H", "D", "C", "S"];
 
 function dealCard(person) {
     // randomize draw
