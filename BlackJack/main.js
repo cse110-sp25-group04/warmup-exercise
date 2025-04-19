@@ -270,7 +270,7 @@ function main() {
 
     //READY BUTTON
     document.getElementById("readyButton").addEventListener("click", () => {
-        if (gameState.currentState === GameState.bettingPhase && gameState.READY_available) {
+        if (gameState.currentState === GameState.BETTING_PHASE && gameState.READY_available) {
             //check if player has not bet yet
             if (player.bet == 0){
                 console.log("You must bet money to play!");
