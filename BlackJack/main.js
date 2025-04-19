@@ -328,6 +328,50 @@ function main() {
             // add card, check for bust etc
         }
     });
+
+
+    function enableDeckDrag() {
+        const deck = document.getElementById('deck');
+        let draggedCard = null;
+        let moveHandler = null;
+      
+        deck.addEventListener('mousedown', e => {
+          e.preventDefault();
+          console.log('mousedown on deck');
+      
+          // 1) create the floating card
+          draggedCard = document.createElement('img');
+          draggedCard.src = '../assets/cards/card_back.png';
+          draggedCard.style.position = 'absolute';
+          draggedCard.style.width  = '80px';
+          draggedCard.style.height = '120px';
+          draggedCard.style.left   = `${e.pageX - 40}px`;
+          draggedCard.style.top    = `${e.pageY - 60}px`;
+          draggedCard.style.pointerEvents = 'none';
+          document.body.appendChild(draggedCard);
+      
+          // 2) while mouse moves, update its position
+          moveHandler = ev => {
+            draggedCard.style.left = `${ev.pageX - 40}px`;
+            draggedCard.style.top  = `${ev.pageY - 60}px`;
+          };
+          document.addEventListener('mousemove', moveHandler);
+        });
+      
+        document.addEventListener('mouseup', () => {
+          if (!draggedCard) return;
+          console.log('mouse up, dropping card');
+          document.removeEventListener('mousemove', moveHandler);
+          draggedCard.style.pointerEvents = '';
+          draggedCard = null;
+          moveHandler = null;
+        });
+      }
+      
+      // wait for the DOM and then enable the drag behavior
+      document.addEventListener('DOMContentLoaded', enableDeckDrag);
+      
+      
 }
 
 main();
