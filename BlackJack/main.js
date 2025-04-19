@@ -175,23 +175,17 @@ function buildShoe() {
     return shoe;
 }
 
+//Returns a card object from the built shoe 
+function drawFromShoe() {
+    if (shoe.length === 0) {
+      shoe = buildShoe();
+    }
+    return shoe.pop();
+  }
+
+//Logs card object and updates the score of the person dealt to
 function dealCard(person) {
-    // randomize draw
-    console.log(person.name);
-    let valueIdx = Math.floor(Math.random() * values.length);
-    let typeIdx = Math.floor(Math.random() * types.length);
-
-    let value = values[valueIdx];
-    let type = types[typeIdx];
-
-    /*
-    const image = document.createElement("img");
-    image.src = `../assets/cards/${value}_${type}.png`;
-    // instead of document, have the CardContainer
-    cardContainer.appendChild(image);
-    */
-
-    const card = new Card(values[valueIdx], types[typeIdx]);
+    const card = drawFromShoe();
     console.log(card);
     person.updateScore(card);
 }
