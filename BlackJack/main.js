@@ -154,6 +154,27 @@ class Card {
 const rank = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 const suit = ["H", "D", "C", "S"];
 
+//Shuffle logic made by Fisher-Yates
+//https://en.wikipedia.org/wiki/Fisher–Yates_shuffle
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+//Builds a shoe of cards and returns a shuffled deck 
+function buildShoe() {
+    const shoe = [];
+    for (const s of suits) {
+        for (const r of ranks) {
+            shoe.push(new Card(r, s));
+        } 
+    }
+    shuffle(shoe);
+    return shoe;
+}
+
 function dealCard(person) {
     // randomize draw
     console.log(person.name);
