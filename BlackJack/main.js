@@ -71,7 +71,7 @@ class Player {
             return;
         } else if (amount < 0 && Math.abs(amount) <= this.bet) {
             // negative amount -> removing bet
-            removeBet(amount);
+            this.removeBet(amount);
             console.log("player bet: " + this.bet);
             return;
         }
