@@ -1,16 +1,33 @@
 body {
-    background-color: #1f446a;
+    background-image: url("../assets/background.png");
+}
+
+#casino-table {
+    background-image: url("../assets/table.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 1200px;
+    transform: rotate(90deg);
+    transform-origin: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cards-container {
     perspective: 1000px;
 }
 
+.cards-wrapper {
+    transform: rotate(-90deg);
+}
 .cards {
     width: 125px;
     height: 160px;
     position: relative;
     border: 1px solid black;
+    display: flex;
     border-radius: 10px;
     transform-style: preserve-3d;
     transition: transform 0.6s;
@@ -41,6 +58,7 @@ body {
     transform: rotateY(180deg);
 }
 
+/*
 #casino-table {
     background-color: #e8cf27;
     width: 1050px;
@@ -56,7 +74,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-} 
+} */
 
 /*
 #shuffle {
