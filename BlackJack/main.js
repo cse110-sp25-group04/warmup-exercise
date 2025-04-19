@@ -163,7 +163,7 @@ function shuffle(array) {
     }
   }
 
-//Builds a shoe of cards and returns a shuffled deck 
+//Builds a shoe of cards and returns an array of shuffled cards  
 function buildShoe() {
     const shoe = [];
     for (const s of suits) {
