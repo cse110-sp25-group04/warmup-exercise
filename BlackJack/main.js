@@ -324,7 +324,7 @@ function main() {
 
     //HIT BUTTON
     document.getElementById("hitButton").addEventListener("click", () => {
-        if (gameState.currentState === GameState.PLAYER_PHASE    && gameState.HIT_available) {
+        if (gameState.currentState === GameState.PLAYER_PHASE && gameState.HIT_available) {
             console.log("Player hits!");
             //Make sure player can no longer double after standing
             gameState.DOUBLE_available = false;
