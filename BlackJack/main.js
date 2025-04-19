@@ -132,14 +132,48 @@ class Dealer {
 }
 
 class Card {
-    constructor(value, type) {
-        this.name = value + "_" + type + ".png";
-        this.value = parseInt(value); // more complex later
+    constructor(rank, suit) {
+      this.rank = rank;
+      this.suit = suit;
+      this.name = '${rank}_${suit}.png';
+      this.values = Card.rankToValues(rank);
     }
+
+    //Converts the rank of the card into a value, mainly for the face cards and ace logic (1 or 11)
+    static rankToValues(rank) {
+        if (rank === 'A') {
+            return 1;
+        }
+        if ('JQK'.includes(rank)) {
+            return 10;
+        } 
+        return Number(rank);
+      }
 }
 
-const values = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-const types = ["H", "D", "C", "S"];
+const ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+const suits = ["H", "D", "C", "S"];
+
+//Shuffle logic made by Fisher-Yates
+//https://en.wikipedia.org/wiki/Fisher–Yates_shuffle
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+//Builds a shoe of cards and returns an array of shuffled cards  
+function buildShoe() {
+    const shoe = [];
+    for (const s of suits) {
+        for (const r of ranks) {
+            shoe.push(new Card(r, s));
+        } 
+    }
+    shuffle(shoe);
+    return shoe;
+}
 
 function dealCard(person) {
     // randomize draw
