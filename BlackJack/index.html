@@ -5,19 +5,50 @@
     <title>Blackjack Game</title>
     <link rel="stylesheet" href = "style.css"/>
     <script src="./main.js" defer></script>
-    <body>
-        <div id="card-container"></div>
-        <div id="chip5" class="bet-button chip" data-value="5"></div>
-        <div id="chip25" class="bet-button chip" data-value="25"></div>
-        <div id="chip100" class="bet-button chip" data-value="100"></div>
-        <br>
-        <button id="-chip5" class="bet-button-minus" data-value="-5">-5</button>
-        <button id="-chip25" class="bet-button-minus" data-value="-25">-25</button>
-        <button id="-chip100" class="bet-button-minus" data-value="-100">-100</button>
-        <br>
+</head>
+<body>
+    <!--Table Section-->
+    <div class = "table">
 
+        <!--dealer area-->
+        <div class = "dealer-area">
+            <h2>Dealer</h2>
+            <div id="dealer-cards" class="card-row"></div>
+        </div>
+
+        <!--player area-->
+        <div class="player-area">
+            <h2>Player</h2>
+        <div id="player-cards" class="card-row"></div>
+        
+        <!-- Chips -->
+        <div class="chips">
+            <img src="../assets/chips/1_chip.png" class="chip bet-button" data-value="1" alt="$1 Chip">
+            <img src="../assets/chips/5_chip.png" class="chip bet-button" data-value="5" alt="$5 Chip">
+            <img src="../assets/chips/10_chip.png" class="chip bet-button" data-value="10" alt="$10 Chip">
+            <img src="../assets/chips/25_chip.png" class="chip bet-button" data-value="25" alt="$25 Chip">
+            <img src="../assets/chips/100_chip.png" class="chip bet-button" data-value="100" alt="$100 Chip">
+            <img src="../assets/chips/500_chip.png" class="chip bet-button" data-value="500" alt="$500 Chip">
+        </div>
+
+        <!--Minus Chip Buttons-->
+        <div class = "chip-minus-buttons">        
+            <button id="-chip1" class="bet-button-minus" data-value="-1">-1</button>
+            <button id="-chip5" class="bet-button-minus" data-value="-5">-5</button>
+            <button id="-chip10" class="bet-button-minus" data-value="-10">-10</button>
+            <button id="-chip25" class="bet-button-minus" data-value="-25">-25</button>
+            <button id="-chip100" class="bet-button-minus" data-value="-100">-100</button>
+            <button id="-chip500" class="bet-button-minus" data-value="-500">-500</button>
+        </div>
+    </div>
+</div>
+     
+    <!--Controls-->
+    <div class="controls">
+        <button id="readyButton">READY</button>
         <button id="hitButton">HIT</button>
         <button id="standButton">STAND</button>
-        <button id="readyButton">READY</button>
-    </body>
+    </div>
+
+</body>
 </html>
