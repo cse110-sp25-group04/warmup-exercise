@@ -270,7 +270,7 @@ function main() {
 
     //READY BUTTON
     document.getElementById("readyButton").addEventListener("click", () => {
-        if (gameState.currentState === "BETTING_PHASE" && gameState.READY_available) {
+        if (gameState.currentState === GameState.BETTING_PHASE && gameState.READY_available) {
             //check if player has not bet yet
             if (player.bet == 0){
                 console.log("You must bet money to play!");
@@ -324,7 +324,7 @@ function main() {
 
     //HIT BUTTON
     document.getElementById("hitButton").addEventListener("click", () => {
-        if (gameState.currentState === "PLAYER_PHASE" && gameState.HIT_available) {
+        if (gameState.currentState === GameState.PLAYER_PHASE && gameState.HIT_available) {
             console.log("Player hits!");
             //Make sure player can no longer double after standing
             gameState.DOUBLE_available = false;
@@ -341,7 +341,7 @@ function main() {
 
     //STAND BUTTON
     document.getElementById("standButton").addEventListener("click", () => {
-        if (gameState.currentState === "PLAYER_PHASE" && gameState.STAND_available) {
+        if (gameState.currentState === GameState.PLAYER_PHASE && gameState.STAND_available) {
             console.log("Player stands! with score: " + player.currentScore);
             playToDeal();
 
@@ -351,7 +351,7 @@ function main() {
 
     //DOUBLE BUTTON
     document.getElementById("doubleButton").addEventListener("click", () => {
-        if (gameState.currentState === "PLAYER_PHASE" && gameState.DOUBLE_available) {
+        if (gameState.currentState === GameState.PLAYER_PHASE && gameState.DOUBLE_available) {
             console.log("Player doubles!");
             // add card, check for bust etc
         }
