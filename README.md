@@ -2,11 +2,9 @@
 
 These will be marked complete as we go:
 
-<ol>
-<li><b>flip and shuffle</b></li>
-<li><b>deck logic and card moving</b></li>
-<li><b>Final Boss: BlackJack</b></li>
-</ol>
+-<b>[flip and shuffle](https://cse110-sp25-group04.github.io/warmup-exercise/flip_shuffle)</b> <br>
+-<b>[deck logic and card moving](https://cse110-sp25-group04.github.io/warmup-exercise/deck_move)</b> <br>
+-<b>[BlackJack](https://cse110-sp25-group04.github.io/warmup-exercise/BlackJack)</b> <br>
 
 ### Helpful Sources:
 
