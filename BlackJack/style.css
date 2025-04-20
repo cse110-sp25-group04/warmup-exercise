@@ -1,3 +1,5 @@
+/* BackGround Style */
+
 body{
     background-image: url(../assets/background.png);
     background-size: cover;
@@ -5,6 +7,10 @@ body{
     margin:0;
     padding: 0 ;
     font-family: "Segoe UI", sans-serif;
+}
+/* Table Style */
+.table{
+    
 }
 #card-container {
     display: flex;
