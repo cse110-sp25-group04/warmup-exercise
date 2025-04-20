@@ -13,8 +13,8 @@ body {
   /* ========== Centering the Table Layout ========== */
   .table-wrapper {
     position: relative;
-    max-width: 900px;
-    margin: 60px auto;
+    max-width: 1100px;
+    margin: 80px auto 40px auto;
   }
   
   /* The table image itself */
