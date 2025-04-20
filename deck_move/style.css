@@ -1,0 +1,62 @@
+html {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-image: url("../assets/background.png");
+    overflow: hidden;
+}
+
+.draggable-card {
+    width: 100px;
+    height: auto;
+    user-select: none;
+    pointer-events: auto;
+}
+
+#table-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+    transform: rotate(90deg) translateY(-100%);
+    transform-origin: top left;
+    width: 100vh;
+    height: 100vw;
+}
+
+#table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#deck {
+    position: relative;
+    width: fit-content;
+    height: fit-content
+}
+
+.card-image {
+    position: absolute;
+    width: 120px;
+    height: 160px;
+    top: 0px;
+}
+
+#top {
+    z-index: 3;
+    left: 0px;
+}
+
+#middle {
+    z-index: 2;
+    left: 5px;
+}
+
+#bottom {
+    z-index: 1;
+    left: 10px;
+}
