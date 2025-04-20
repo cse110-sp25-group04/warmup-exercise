@@ -176,7 +176,7 @@ function buildShoe() {
 }
 
 //Returns a card object from the built shoe 
-function drawFromShoe() {
+function drawFromShoe(shoe) {
     if (shoe.length === 0) {
       shoe = buildShoe();
     }
