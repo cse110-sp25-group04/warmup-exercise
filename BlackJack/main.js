@@ -153,6 +153,7 @@ class Card {
 
 const ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 const suits = ["H", "D", "C", "S"];
+let shoe = [];
 
 //Shuffle logic made by Fisher-Yates
 //https://en.wikipedia.org/wiki/Fisher–Yates_shuffle
@@ -165,20 +166,20 @@ function shuffle(array) {
 
 //Builds a shoe of cards and returns an array of shuffled cards  
 function buildShoe() {
-    const shoe = [];
+    shoe = [];
     for (const s of suits) {
         for (const r of ranks) {
             shoe.push(new Card(r, s));
         } 
     }
     shuffle(shoe);
-    return shoe;
 }
 
 //Returns a card object from the built shoe 
-function drawFromShoe(shoe) {
+function drawFromShoe() {
+    console.log(shoe);
     if (shoe.length === 0) {
-      shoe = buildShoe();
+        buildShoe();
     }
     return shoe.pop();
   }
