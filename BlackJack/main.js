@@ -46,7 +46,8 @@ class Player {
             this.currentScore -= 10;
             this.aceAvailable = false;  // No more Aces can be used as 11
         }
-        if(this.currentScore > 21) {
+
+        if(this.currentScore >= 21) {
             resolve(this, this.assocDealer); // end game
         }
 
