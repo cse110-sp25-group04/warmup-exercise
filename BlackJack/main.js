@@ -22,7 +22,8 @@ class Player {
         this.aceAvailable = true;       
         this.aceInHand = false;
         this.moneyInBank = startMoney;        
-        this.bet = 0;                   
+        this.bet = 0;
+        this.assocDealer = undefined;
     }
 
     aceLogic() {
@@ -44,8 +45,8 @@ class Player {
             this.aceAvailable = false;  // No more Aces can be used as 11
         }
 
-        if(this.currentScore == 21) {
-            gameState.currentState = GameState.DEALER_PHASE;
+        if(this.currentScore >= 21) {
+            resolve(this, this.assocDealer); // end game
         }
 
     }
@@ -103,6 +104,7 @@ class Dealer {
         this.currentScore = 0;          
         this.aceAvailable = true;
         this.aceInHand = false;
+        this.assocPlayer = undefined;
     }
        
     aceLogic() {
@@ -123,10 +125,11 @@ class Dealer {
             this.aceAvailable = false;  // remove 10 once
         }
 
+        /*
         if(this.currentScore >= 17) {
-            gameState.currentState = GameState.DEALER_PHASE;
+            resolve(this.assocPlayer, this);
         }
-
+        */
         console.log("dealer score: " + this.currentScore);
     }
 }
@@ -184,26 +187,32 @@ function drawFromShoe() {
   }
 
 //Logs card object and updates the score of the person dealt to
-function dealCard(person) {
+function dealCard(person, faceUp) {
     const card = drawFromShoe();
     console.log(card);
     person.updateScore(card);
-    drawCard(person, true, card);
+    console.log("drawing card");
+    drawCard(person, faceUp, card);
 }
 
 function drawCard(person, isFaceUp, card) {
     if (isFaceUp) {
         const img = document.createElement("img");
-
-        // Set attributes
         console.log(card.name);
         img.src = "../assets/cards/" + card.name;
         img.alt = "Description of image";
         img.className = "card";
-
         const container = document.getElementById(person.name+"-cards");
         container.append(img);
-
+    }
+    else {
+        const img = document.createElement("img");
+        console.log(card.name);
+        img.src = "../assets/cards/card_back.png";
+        img.alt = "Description of image";
+        img.className = "card";
+        const container = document.getElementById(person.name+"-cards");
+        container.append(img);
     }
 }
 
@@ -228,23 +237,25 @@ function playToDeal() {
 }
 
 function resolve(player, dealer) {
+    // flip over first dealer card
+    console.log("resolved game");
+    playToDeal();
     if (player.currentScore > 21) {
         player.processLoss();
-        return;
     }
+    else {
+        while(dealer.currentScore < 17) {
+            dealCard(dealer, true);
+        }
     
-    while(dealer.currentScore < 17) {
-        dealCard(dealer);
+        if(dealer.currentScore > 21) {
+            player.processWin();
+        } else {
+            findWinner(player, dealer);
+        }
     }
 
-    if(dealer.currentScore > 21) {
-        player.processWin();
-        return;
-    } else {
-        findWinner(player, dealer);
-    }
-
-    reset(player, dealer);
+    // reset(player, dealer); do the reset logic when player says ready
     gameState.READY_available; // let player start new game
 }
 
@@ -284,6 +295,10 @@ function main() {
     //Set up initial game state, button availability is set by default ^^
     const player = new Player(100);
     const dealer = new Dealer();
+    player.assocDealer = dealer;
+    dealer.assocPlayer = player;
+    console.log(player.assocDealer == dealer);
+    console.log(dealer.assocPlayer == player);
 
     console.log(gameState.currentState);
 
@@ -298,10 +313,10 @@ function main() {
 
             console.log("Player is ready!");
             //deal initial hands
-            dealCard(player);
-            dealCard(dealer);
-            dealCard(player);
-            dealCard(dealer);
+            dealCard(player, true);
+            dealCard(dealer, false);
+            dealCard(player, true);
+            dealCard(dealer, true);
 
             //change game state
             readyToPlay();
@@ -310,6 +325,7 @@ function main() {
         else if (gameState.current == GameState.DEALER_PHASE && gameState.READY_available) {
             // at this point the game is over
             // ready should start the next game
+            reset(player, dealer);
 
         }
         else{
@@ -353,7 +369,7 @@ function main() {
             //Make sure player can no longer double after standing
             gameState.DOUBLE_available = false;
 
-            dealCard(player);
+            dealCard(player, true);
             console.log("player score: " + player.currentScore);
 
         }
@@ -364,8 +380,7 @@ function main() {
     document.getElementById("standButton").addEventListener("click", () => {
         if (gameState.currentState === GameState.PLAYER_PHASE && gameState.STAND_available) {
             console.log("Player stands! with score: " + player.currentScore);
-            playToDeal();
-
+            
             resolve(player, dealer);
         }
     });
