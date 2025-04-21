@@ -46,8 +46,7 @@ class Player {
             this.currentScore -= 10;
             this.aceAvailable = false;  // No more Aces can be used as 11
         }
-
-        if(this.currentScore >= 21) {
+        if(this.currentScore > 21) {
             resolve(this, this.assocDealer); // end game
         }
 
@@ -180,15 +179,6 @@ function buildShoe() {
         } 
     }
     shuffle(shoe);
-    shoe[51] = new Card("3", "D");
-    shoe[50] = new Card("8", "D");
-    shoe[49] = new Card("K", "D");
-    shoe[48] = new Card("A", "D");
-    shoe[47] = new Card("4", "D");
-    shoe[46] = new Card("5", "D");
-    shoe[45] = new Card("2", "D");
-    console.log("rigged cards");
-    
 }
 
 //Returns a card object from the built shoe 
@@ -367,6 +357,11 @@ function main() {
             dealCard(dealer, true);
             dealCard(player, true);
             dealCard(player, true);
+
+            if (player.currentScore === 21) {
+                console.log("Player has blackjack!");
+                resolve(player, dealer);
+            }
         }
         else if (gameState.currentState == GameState.DEALER_PHASE && gameState.READY_available) {
             // at this point the game is over
