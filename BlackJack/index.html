@@ -8,6 +8,10 @@
 </head>
 <body>
 
+  <div id="balance-dis" class="balance-display">
+    <p style="font-size: 25px;">Current Balance:</p>
+  </div>
+
   <!-- Wrapper that holds table image and game content -->
   <div class="table-wrapper">
     <img src="../assets/table_horizontal.png" alt="Table Image" class="table-image" />
@@ -15,7 +19,7 @@
     <div class="table-content">
       <!-- Dealer Area -->
       <div class="dealer-area">
-        <h2>Dealer</h2>
+        <!-- <h2>Dealer</h2> -->
         <div id="dealer-cards" class="card-row">
           <!--
             <img src = "../assets/cards/card_back.png" alt="Hidden Card" class ="card"/>
@@ -26,7 +30,10 @@
 
       <!-- Player Area -->
       <div class="player-area">
-        <h2>Player</h2>
+        <!-- <h2>Player</h2> -->
+        <div id="bet-dis" class="bet-display">
+          <h2>Current Bet: $1</h2>
+        </div>
         <div id="player-cards" class="card-row">
             <!--
               <img src = "../assets/cards/10_D.png" alt = "Ten of Diamonds" class="card"/>
@@ -54,6 +61,9 @@
           <button id="-chip100" class="bet-button-minus" data-value="-100">-100</button>
           <button id="-chip500" class="bet-button-minus" data-value="-500">-500</button>
         </div>
+
+        
+
       </div>
     </div>
   </div>

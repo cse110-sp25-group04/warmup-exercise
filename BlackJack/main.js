@@ -273,9 +273,13 @@ function resolve(player, dealer) {
             findWinner(player, dealer);
         }
     }
-    
+    updateBetBalanceDisplay(player);
     // reset(player, dealer); do the reset logic when player says ready
     gameState.READY_available = true; // let player start new game
+    const betDiv = document.getElementById("bet-dis");
+    const betText = betDiv.querySelector("h2");
+    betText.textContent = "Press READY to start a new game.";
+
 }
 
 function findWinner(player, dealer) {
@@ -306,6 +310,7 @@ function reset(player, dealer) {
     dealer.currentScore = 0;
     dealer.aceAvailable = true;
     dealer.aceInHand = false;
+    dealer.gotFirstCard = false;
 
     // Clear cards
     document.getElementById("dealer-cards").innerHTML = "";
@@ -314,16 +319,24 @@ function reset(player, dealer) {
     console.log("Game has been reset.");
 }
 
+function updateBetBalanceDisplay(player) {
+    const balanceDiv = document.getElementById("balance-dis");
+    const balanceText = balanceDiv.querySelector("p");
+    balanceText.textContent = "Current Balance: $" + player.moneyInBank;
+
+    const betDiv = document.getElementById("bet-dis");
+    const betText = betDiv.querySelector("h2");
+    betText.textContent = "Current Bet: $" + player.bet;
+}
+
 function main() {
     //Set up initial game state, button availability is set by default ^^
     const player = new Player(100);
     const dealer = new Dealer();
     player.assocDealer = dealer;
     dealer.assocPlayer = player;
-    console.log(player.assocDealer == dealer);
-    console.log(dealer.assocPlayer == player);
-
-    console.log(gameState.currentState);
+    
+    updateBetBalanceDisplay(player);
 
     //READY BUTTON
     document.getElementById("readyButton").addEventListener("click", () => {
@@ -352,7 +365,7 @@ function main() {
             // ready should start the next game
             
             reset(player, dealer);
-
+            updateBetBalanceDisplay(player);
         }
         else{
             console.log("You cannot ready at this time!");
@@ -366,6 +379,7 @@ function main() {
             if (gameState.currentState ===  GameState.BETTING_PHASE && gameState.chipsAvailable){
                 const amount = parseInt(button.getAttribute("data-value"));
                 player.placeBet(amount);
+                updateBetBalanceDisplay(player);
             }
             else{
                 console.log("You cannot bet at this time!");
@@ -380,6 +394,7 @@ function main() {
             if (gameState.currentState === GameState.BETTING_PHASE && gameState.chipsAvailable){
                 const amount = parseInt(button.getAttribute("data-value"));
                 player.removeBet(amount);
+                updateBetBalanceDisplay(player);
             }
             else{
                 console.log("You cannot bet at this time!");
@@ -400,7 +415,6 @@ function main() {
 
         }
     });
-    
 
     //STAND BUTTON
     document.getElementById("standButton").addEventListener("click", () => {
