@@ -180,6 +180,15 @@ function buildShoe() {
         } 
     }
     shuffle(shoe);
+    shoe[51] = new Card("3", "D");
+    shoe[50] = new Card("8", "D");
+    shoe[49] = new Card("K", "D");
+    shoe[48] = new Card("A", "D");
+    shoe[47] = new Card("4", "D");
+    shoe[46] = new Card("5", "D");
+    shoe[45] = new Card("2", "D");
+    console.log("rigged cards");
+    
 }
 
 //Returns a card object from the built shoe 
@@ -192,6 +201,7 @@ function drawFromShoe() {
 
 //Logs card object and updates the score of the person dealt to
 function dealCard(person, faceUp) {
+    console.log("dealing card");
     const card = drawFromShoe();
     console.log(card);
     if (!person.gotFirstCard) {
@@ -199,8 +209,8 @@ function dealCard(person, faceUp) {
         person.gotFirstCard = true;
         console.log(person.name, "got", card.name);
     }
-    person.updateScore(card);
     drawCard(person, faceUp, card);
+    person.updateScore(card);
 }
 
 function drawCard(person, isFaceUp, card) {
@@ -264,6 +274,7 @@ function resolve(player, dealer) {
     }
     else {
         while(dealer.currentScore < 17) {
+            console.log("hmm");
             dealCard(dealer, true);
         }
     
@@ -279,6 +290,7 @@ function resolve(player, dealer) {
     const betDiv = document.getElementById("bet-dis");
     const betText = betDiv.querySelector("h2");
     betText.textContent = "Press READY to start a new game.";
+    console.log("done resolving");
 
 }
 
@@ -351,10 +363,12 @@ function main() {
 
             console.log("Player is ready!");
             //deal initial hands
-            dealCard(player, true);
+            console.log("dealing initials");
             dealCard(dealer, false);
-            dealCard(player, true);
             dealCard(dealer, true);
+            dealCard(player, true);
+            dealCard(player, true);
+            
 
             //change game state
             readyToPlay();
@@ -409,7 +423,8 @@ function main() {
             console.log("Player hits!");
             //Make sure player can no longer double after standing
             gameState.DOUBLE_available = false;
-
+            
+            console.log("hit!");
             dealCard(player, true);
             console.log("player score: " + player.currentScore);
 
