@@ -48,6 +48,7 @@ class Player {
         }
 
         if(this.currentScore >= 21) {
+            console.log("Player has blackjack!");
             resolve(this, this.assocDealer); // end game
         }
 
@@ -62,7 +63,7 @@ class Player {
         } else {
             console.log("Cannot remove more than you have bet.");
         }
-        console.log("player bet: " + this.bet);
+        console.log("Player bet: $" + this.bet);
     }
 
     placeBet(amount) {
@@ -70,12 +71,12 @@ class Player {
             this.bet += amount;
             this.moneyInBank -= amount;
             console.log(`Player has placed a bet of $${amount}`);
-            console.log("player bet: " + this.bet);
+            console.log("Player bet: $" + this.bet);
             return;
         } else if (amount < 0 && Math.abs(amount) <= this.bet) {
             // negative amount -> removing bet
             this.removeBet(amount);
-            console.log("player bet: " + this.bet);
+            console.log("Player bet: $" + this.bet);
             return;
         }
         console.log("Insufficient funds to place bet.");
@@ -128,13 +129,6 @@ class Dealer {
             this.currentScore -= 10;
             this.aceAvailable = false;  // remove 10 once
         }
-
-        /*
-        if(this.currentScore >= 17) {
-            resolve(this.assocPlayer, this);
-        }
-        */
-        console.log("dealer score: " + this.currentScore);
     }
 }
 
@@ -180,6 +174,13 @@ function buildShoe() {
         } 
     }
     shuffle(shoe);
+    shoe[51] = new Card("3", "D");
+    shoe[50] = new Card("8", "D");
+    shoe[49] = new Card("K", "D");
+    shoe[48] = new Card("A", "D");
+    shoe[47] = new Card("4", "D");
+    shoe[46] = new Card("5", "D");
+    shoe[45] = new Card("2", "D");
 }
 
 //Returns a card object from the built shoe 
@@ -192,13 +193,10 @@ function drawFromShoe() {
 
 //Logs card object and updates the score of the person dealt to
 function dealCard(person, faceUp) {
-    console.log("dealing card");
     const card = drawFromShoe();
-    console.log(card);
     if (!person.gotFirstCard) {
         person.firstCardName = card.name;
         person.gotFirstCard = true;
-        console.log(person.name, "got", card.name);
     }
     drawCard(person, faceUp, card);
     person.updateScore(card);
@@ -207,7 +205,6 @@ function dealCard(person, faceUp) {
 function drawCard(person, isFaceUp, card) {
     if (isFaceUp) {
         const img = document.createElement("img");
-        console.log(card.name);
         img.src = "../assets/cards/" + card.name;
         img.alt = "Description of image";
         img.className = "card";
@@ -216,7 +213,6 @@ function drawCard(person, isFaceUp, card) {
     }
     else {
         const img = document.createElement("img");
-        console.log(card.name);
         img.src = "../assets/cards/card_back.png";
         img.alt = "Description of image";
         img.className = "card";
@@ -258,14 +254,13 @@ function resolve(player, dealer) {
     // flip over first dealer card
     flipCardUp(dealer, dealer.firstCardName);
 
-    console.log("resolved game");
+    console.log("Resolving game");
     playToDeal();
     if (player.currentScore > 21) {
         player.processLoss();
     }
     else {
         while(dealer.currentScore < 17) {
-            console.log("hmm");
             dealCard(dealer, true);
         }
     
@@ -281,7 +276,6 @@ function resolve(player, dealer) {
     const betDiv = document.getElementById("bet-dis");
     const betText = betDiv.querySelector("h2");
     betText.textContent = "Press READY to start a new game.";
-    console.log("done resolving");
 
 }
 
@@ -343,8 +337,6 @@ function main() {
 
     //READY BUTTON
     document.getElementById("readyButton").addEventListener("click", () => {
-        console.log(gameState.currentState);
-        console.log(gameState.READY_available);
         if (gameState.currentState === GameState.BETTING_PHASE && gameState.READY_available) {
             //check if player has not bet yet
             if (player.bet == 0){
@@ -358,11 +350,14 @@ function main() {
             dealCard(dealer, true);
             dealCard(player, true);
             dealCard(player, true);
+            console.log("Player score: " + player.currentScore);
 
+            /*
             if (player.currentScore === 21) {
-                console.log("Player has blackjack!");
+                console.log("Player has blackjweffwefewack!");
                 resolve(player, dealer);
             }
+            */
         }
         else if (gameState.currentState == GameState.DEALER_PHASE && gameState.READY_available) {
             // at this point the game is over
@@ -413,10 +408,9 @@ function main() {
             console.log("Player hits!");
             //Make sure player can no longer double after standing
             gameState.DOUBLE_available = false;
-            
-            console.log("hit!");
+
             dealCard(player, true);
-            console.log("player score: " + player.currentScore);
+            console.log("Player score: " + player.currentScore);
 
         }
     });
@@ -429,7 +423,7 @@ function main() {
             resolve(player, dealer);
         }
     });
-
+/*
     //DOUBLE BUTTON
     document.getElementById("doubleButton").addEventListener("click", () => {
         if (gameState.currentState === GameState.PLAYER_PHASE && gameState.DOUBLE_available) {
@@ -437,6 +431,7 @@ function main() {
             // add card, check for bust etc
         }
     });
+*/
 }
 
 main();
