@@ -24,6 +24,8 @@ class Player {
         this.moneyInBank = startMoney;        
         this.bet = 0;
         this.assocDealer = undefined;
+        this.firstCardName = undefined;
+        this.gotFirstCard = true;
     }
 
     aceLogic() {
@@ -105,6 +107,8 @@ class Dealer {
         this.aceAvailable = true;
         this.aceInHand = false;
         this.assocPlayer = undefined;
+        this.firstCardName = undefined;
+        this.gotFirstCard = false;
     }
        
     aceLogic() {
@@ -190,8 +194,12 @@ function drawFromShoe() {
 function dealCard(person, faceUp) {
     const card = drawFromShoe();
     console.log(card);
+    if (!person.gotFirstCard) {
+        person.firstCardName = card.name;
+        person.gotFirstCard = true;
+        console.log(person.name, "got", card.name);
+    }
     person.updateScore(card);
-    console.log("drawing card");
     drawCard(person, faceUp, card);
 }
 
@@ -213,6 +221,15 @@ function drawCard(person, isFaceUp, card) {
         img.className = "card";
         const container = document.getElementById(person.name+"-cards");
         container.append(img);
+    }
+}
+
+function flipCardUp(person, cardname) {
+    const div = document.getElementById(person.name+"-cards");
+    const firstImg = div.querySelector("img");
+
+    if (firstImg) {
+        firstImg.src = "../assets/cards/" + cardname;
     }
 }
 
@@ -238,6 +255,8 @@ function playToDeal() {
 
 function resolve(player, dealer) {
     // flip over first dealer card
+    flipCardUp(dealer, dealer.firstCardName);
+
     console.log("resolved game");
     playToDeal();
     if (player.currentScore > 21) {
@@ -254,9 +273,9 @@ function resolve(player, dealer) {
             findWinner(player, dealer);
         }
     }
-
+    
     // reset(player, dealer); do the reset logic when player says ready
-    gameState.READY_available; // let player start new game
+    gameState.READY_available = true; // let player start new game
 }
 
 function findWinner(player, dealer) {
@@ -288,6 +307,10 @@ function reset(player, dealer) {
     dealer.aceAvailable = true;
     dealer.aceInHand = false;
 
+    // Clear cards
+    document.getElementById("dealer-cards").innerHTML = "";
+    document.getElementById("player-cards").innerHTML = "";
+
     console.log("Game has been reset.");
 }
 
@@ -304,6 +327,8 @@ function main() {
 
     //READY BUTTON
     document.getElementById("readyButton").addEventListener("click", () => {
+        console.log(gameState.currentState);
+        console.log(gameState.READY_available);
         if (gameState.currentState === GameState.BETTING_PHASE && gameState.READY_available) {
             //check if player has not bet yet
             if (player.bet == 0){
@@ -322,9 +347,10 @@ function main() {
             readyToPlay();
 
         }
-        else if (gameState.current == GameState.DEALER_PHASE && gameState.READY_available) {
+        else if (gameState.currentState == GameState.DEALER_PHASE && gameState.READY_available) {
             // at this point the game is over
             // ready should start the next game
+            
             reset(player, dealer);
 
         }
