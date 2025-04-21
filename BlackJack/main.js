@@ -135,7 +135,7 @@ class Card {
     constructor(rank, suit) {
       this.rank = rank;
       this.suit = suit;
-      this.name = '${rank}_${suit}.png';
+      this.name = `${rank}_${suit}.png`;
       this.value = Card.rankToValues(rank);
     }
 
@@ -177,7 +177,6 @@ function buildShoe() {
 
 //Returns a card object from the built shoe 
 function drawFromShoe() {
-    console.log(shoe);
     if (shoe.length === 0) {
         buildShoe();
     }
@@ -189,6 +188,23 @@ function dealCard(person) {
     const card = drawFromShoe();
     console.log(card);
     person.updateScore(card);
+    drawCard(person, true, card);
+}
+
+function drawCard(person, isFaceUp, card) {
+    if (isFaceUp) {
+        const img = document.createElement("img");
+
+        // Set attributes
+        console.log(card.name);
+        img.src = "../assets/cards/" + card.name;
+        img.alt = "Description of image";
+        img.className = "card";
+
+        const container = document.getElementById(person.name+"-cards");
+        container.append(img);
+
+    }
 }
 
 //dealer phase to player phase
@@ -216,7 +232,7 @@ function resolve(player, dealer) {
         player.processLoss();
         return;
     }
-
+    
     while(dealer.currentScore < 17) {
         dealCard(dealer);
     }
@@ -226,7 +242,10 @@ function resolve(player, dealer) {
         return;
     } else {
         findWinner(player, dealer);
-    }   
+    }
+
+    reset(player, dealer);
+    gameState.READY_available; // let player start new game
 }
 
 function findWinner(player, dealer) {
@@ -237,7 +256,6 @@ function findWinner(player, dealer) {
     } else {
         player.processLoss();
     }
-    reset(player, dealer);
 }
 
 function reset(player, dealer) {
@@ -289,6 +307,11 @@ function main() {
             readyToPlay();
 
         }
+        else if (gameState.current == GameState.DEALER_PHASE && gameState.READY_available) {
+            // at this point the game is over
+            // ready should start the next game
+
+        }
         else{
             console.log("You cannot ready at this time!");
             return;
@@ -333,9 +356,6 @@ function main() {
             dealCard(player);
             console.log("player score: " + player.currentScore);
 
-            if(player.currentScore > 21) {
-                reset(player, dealer);
-            }
         }
     });
     
