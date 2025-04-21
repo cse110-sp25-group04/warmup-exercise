@@ -22,7 +22,10 @@ class Player {
         this.aceAvailable = true;       
         this.aceInHand = false;
         this.moneyInBank = startMoney;        
-        this.bet = 0;                   
+        this.bet = 0;
+        this.assocDealer = undefined;
+        this.firstCardName = undefined;
+        this.gotFirstCard = true;
     }
 
     aceLogic() {
@@ -44,8 +47,8 @@ class Player {
             this.aceAvailable = false;  // No more Aces can be used as 11
         }
 
-        if(this.currentScore == 21) {
-            gameState.currentState = GameState.DEALER_PHASE;
+        if(this.currentScore >= 21) {
+            resolve(this, this.assocDealer); // end game
         }
 
     }
@@ -103,6 +106,9 @@ class Dealer {
         this.currentScore = 0;          
         this.aceAvailable = true;
         this.aceInHand = false;
+        this.assocPlayer = undefined;
+        this.firstCardName = undefined;
+        this.gotFirstCard = false;
     }
        
     aceLogic() {
@@ -123,10 +129,11 @@ class Dealer {
             this.aceAvailable = false;  // remove 10 once
         }
 
+        /*
         if(this.currentScore >= 17) {
-            gameState.currentState = GameState.DEALER_PHASE;
+            resolve(this.assocPlayer, this);
         }
-
+        */
         console.log("dealer score: " + this.currentScore);
     }
 }
@@ -135,8 +142,8 @@ class Card {
     constructor(rank, suit) {
       this.rank = rank;
       this.suit = suit;
-      this.name = '${rank}_${suit}.png';
-      this.values = Card.rankToValues(rank);
+      this.name = `${rank}_${suit}.png`;
+      this.value = Card.rankToValues(rank);
     }
 
     //Converts the rank of the card into a value, mainly for the face cards and ace logic (1 or 11)
@@ -153,6 +160,7 @@ class Card {
 
 const ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 const suits = ["H", "D", "C", "S"];
+let shoe = [];
 
 //Shuffle logic made by Fisher-Yates
 //https://en.wikipedia.org/wiki/Fisher–Yates_shuffle
@@ -165,29 +173,74 @@ function shuffle(array) {
 
 //Builds a shoe of cards and returns an array of shuffled cards  
 function buildShoe() {
-    const shoe = [];
+    shoe = [];
     for (const s of suits) {
         for (const r of ranks) {
             shoe.push(new Card(r, s));
         } 
     }
     shuffle(shoe);
-    return shoe;
+    shoe[51] = new Card("3", "D");
+    shoe[50] = new Card("8", "D");
+    shoe[49] = new Card("K", "D");
+    shoe[48] = new Card("A", "D");
+    shoe[47] = new Card("4", "D");
+    shoe[46] = new Card("5", "D");
+    shoe[45] = new Card("2", "D");
+    console.log("rigged cards");
+    
 }
 
 //Returns a card object from the built shoe 
-function drawFromShoe(shoe) {
+function drawFromShoe() {
     if (shoe.length === 0) {
-      shoe = buildShoe();
+        buildShoe();
     }
     return shoe.pop();
   }
 
 //Logs card object and updates the score of the person dealt to
-function dealCard(person) {
+function dealCard(person, faceUp) {
+    console.log("dealing card");
     const card = drawFromShoe();
     console.log(card);
+    if (!person.gotFirstCard) {
+        person.firstCardName = card.name;
+        person.gotFirstCard = true;
+        console.log(person.name, "got", card.name);
+    }
+    drawCard(person, faceUp, card);
     person.updateScore(card);
+}
+
+function drawCard(person, isFaceUp, card) {
+    if (isFaceUp) {
+        const img = document.createElement("img");
+        console.log(card.name);
+        img.src = "../assets/cards/" + card.name;
+        img.alt = "Description of image";
+        img.className = "card";
+        const container = document.getElementById(person.name+"-cards");
+        container.append(img);
+    }
+    else {
+        const img = document.createElement("img");
+        console.log(card.name);
+        img.src = "../assets/cards/card_back.png";
+        img.alt = "Description of image";
+        img.className = "card";
+        const container = document.getElementById(person.name+"-cards");
+        container.append(img);
+    }
+}
+
+function flipCardUp(person, cardname) {
+    const div = document.getElementById(person.name+"-cards");
+    const firstImg = div.querySelector("img");
+
+    if (firstImg) {
+        firstImg.src = "../assets/cards/" + cardname;
+    }
 }
 
 //dealer phase to player phase
@@ -211,21 +264,34 @@ function playToDeal() {
 }
 
 function resolve(player, dealer) {
+    // flip over first dealer card
+    flipCardUp(dealer, dealer.firstCardName);
+
+    console.log("resolved game");
+    playToDeal();
     if (player.currentScore > 21) {
         player.processLoss();
-        return;
     }
-
-    while(dealer.currentScore < 17) {
-        dealCard(dealer);
+    else {
+        while(dealer.currentScore < 17) {
+            console.log("hmm");
+            dealCard(dealer, true);
+        }
+    
+        if(dealer.currentScore > 21) {
+            player.processWin();
+        } else {
+            findWinner(player, dealer);
+        }
     }
+    updateBetBalanceDisplay(player);
+    // reset(player, dealer); do the reset logic when player says ready
+    gameState.READY_available = true; // let player start new game
+    const betDiv = document.getElementById("bet-dis");
+    const betText = betDiv.querySelector("h2");
+    betText.textContent = "Press READY to start a new game.";
+    console.log("done resolving");
 
-    if(dealer.currentScore > 21) {
-        player.processWin();
-        return;
-    } else {
-        findWinner(player, dealer);
-    }   
 }
 
 function findWinner(player, dealer) {
@@ -236,7 +302,6 @@ function findWinner(player, dealer) {
     } else {
         player.processLoss();
     }
-    reset(player, dealer);
 }
 
 function reset(player, dealer) {
@@ -257,36 +322,58 @@ function reset(player, dealer) {
     dealer.currentScore = 0;
     dealer.aceAvailable = true;
     dealer.aceInHand = false;
+    dealer.gotFirstCard = false;
+
+    // Clear cards
+    document.getElementById("dealer-cards").innerHTML = "";
+    document.getElementById("player-cards").innerHTML = "";
 
     console.log("Game has been reset.");
+}
+
+function updateBetBalanceDisplay(player) {
+    const balanceDiv = document.getElementById("balance-dis");
+    const balanceText = balanceDiv.querySelector("p");
+    balanceText.textContent = "Current Balance: $" + player.moneyInBank;
+
+    const betDiv = document.getElementById("bet-dis");
+    const betText = betDiv.querySelector("h2");
+    betText.textContent = "Current Bet: $" + player.bet;
 }
 
 function main() {
     //Set up initial game state, button availability is set by default ^^
     const player = new Player(100);
     const dealer = new Dealer();
-
-    console.log(gameState.currentState);
+    player.assocDealer = dealer;
+    dealer.assocPlayer = player;
+    
+    updateBetBalanceDisplay(player);
 
     //READY BUTTON
     document.getElementById("readyButton").addEventListener("click", () => {
+        console.log(gameState.currentState);
+        console.log(gameState.READY_available);
         if (gameState.currentState === GameState.BETTING_PHASE && gameState.READY_available) {
             //check if player has not bet yet
             if (player.bet == 0){
                 console.log("You must bet money to play!");
                 return;
             }
-
-            console.log("Player is ready!");
-            //deal initial hands
-            dealCard(player);
-            dealCard(dealer);
-            dealCard(player);
-            dealCard(dealer);
-
-            //change game state
+//change game state
             readyToPlay();
-
+            console.log("Player is ready!");
+            dealCard(dealer, false);
+            dealCard(dealer, true);
+            dealCard(player, true);
+            dealCard(player, true);
+        }
+        else if (gameState.currentState == GameState.DEALER_PHASE && gameState.READY_available) {
+            // at this point the game is over
+            // ready should start the next game
+            
+            reset(player, dealer);
+            updateBetBalanceDisplay(player);
         }
         else{
             console.log("You cannot ready at this time!");
@@ -300,6 +387,7 @@ function main() {
             if (gameState.currentState ===  GameState.BETTING_PHASE && gameState.chipsAvailable){
                 const amount = parseInt(button.getAttribute("data-value"));
                 player.placeBet(amount);
+                updateBetBalanceDisplay(player);
             }
             else{
                 console.log("You cannot bet at this time!");
@@ -314,6 +402,7 @@ function main() {
             if (gameState.currentState === GameState.BETTING_PHASE && gameState.chipsAvailable){
                 const amount = parseInt(button.getAttribute("data-value"));
                 player.removeBet(amount);
+                updateBetBalanceDisplay(player);
             }
             else{
                 console.log("You cannot bet at this time!");
@@ -328,23 +417,19 @@ function main() {
             console.log("Player hits!");
             //Make sure player can no longer double after standing
             gameState.DOUBLE_available = false;
-
-            dealCard(player);
+            
+            console.log("hit!");
+            dealCard(player, true);
             console.log("player score: " + player.currentScore);
 
-            if(player.currentScore > 21) {
-                reset(player, dealer);
-            }
         }
     });
-    
 
     //STAND BUTTON
     document.getElementById("standButton").addEventListener("click", () => {
         if (gameState.currentState === GameState.PLAYER_PHASE && gameState.STAND_available) {
             console.log("Player stands! with score: " + player.currentScore);
-            playToDeal();
-
+            
             resolve(player, dealer);
         }
     });
