@@ -136,7 +136,7 @@ class Card {
       this.rank = rank;
       this.suit = suit;
       this.name = '${rank}_${suit}.png';
-      this.values = Card.rankToValues(rank);
+      this.value = Card.rankToValues(rank);
     }
 
     //Converts the rank of the card into a value, mainly for the face cards and ace logic (1 or 11)
