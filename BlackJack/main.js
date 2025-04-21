@@ -174,13 +174,6 @@ function buildShoe() {
         } 
     }
     shuffle(shoe);
-    shoe[51] = new Card("3", "D");
-    shoe[50] = new Card("8", "D");
-    shoe[49] = new Card("K", "D");
-    shoe[48] = new Card("A", "D");
-    shoe[47] = new Card("4", "D");
-    shoe[46] = new Card("5", "D");
-    shoe[45] = new Card("2", "D");
 }
 
 //Returns a card object from the built shoe 
